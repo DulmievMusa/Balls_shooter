@@ -1,2 +1,2 @@
-# Balls_shoot
+# Balls_shooter
 Run main.py
