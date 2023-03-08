@@ -1,5 +1,6 @@
 import pygame
 from funcs import *
+import random
 
 
 class Ball:
@@ -10,7 +11,7 @@ class Ball:
         self.can_change_y = False
         self.sin = get_sin(start, pos)
         self.cos = get_cos(start, pos)
-        self.color = pygame.Color((255, 255, 255))
+        self.color = pygame.Color((random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
         self.plus_x, self.plus_y = self.cos * self.speed, self.sin * self.speed
         self.x, self.y = start
         self.screen = screen
