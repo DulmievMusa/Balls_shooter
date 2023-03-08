@@ -37,6 +37,9 @@ if __name__ == '__main__':
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP or event.key == pygame.K_w:
                     y0 -= 100
+                    y0 -= 100
+                    if y0 <= 0:
+                        y0 = 0
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     y0 += 100
                     if y0 >= screen_height:
