@@ -40,6 +40,7 @@ if __name__ == '__main__':
                     y0 -= 100
                     if y0 <= 0:
                         y0 = 0
+                        balls_sp.clear()
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     y0 += 100
                     if y0 >= screen_height:
