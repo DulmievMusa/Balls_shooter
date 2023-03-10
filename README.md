@@ -7,7 +7,7 @@ https://user-images.githubusercontent.com/96068252/224353028-52223d3c-0341-4615-
 
 
 
-To turn on or turn off blocks press B
+To turn on or turn off blocks press B (beta version)
 
 
 
