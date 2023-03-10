@@ -21,7 +21,7 @@ class Ball:
     def get_coords(self):
         return (self.x, self.y)
 
-    def move(self, y_of_board):
+    def move(self, y_of_board, squares):
         if self.x + self.radius >= self.screen_width or self.x <= 0:
             self.plus_x = -self.plus_x
         if self.y + self.radius < y_of_board:
@@ -31,6 +31,11 @@ class Ball:
             self.plus_y = -self.plus_y
         if self.y <= 0:
             self.plus_y = -self.plus_y
+        for square in squares:
+            if square.rect.collidepoint(self.x + self.radius * (self.plus_x / abs(self.plus_x)) + self.plus_x, self.y):
+                self.plus_x = -self.plus_x
+            if square.rect.collidepoint(self.x, self.y + self.plus_y + self.radius * (self.plus_y / abs(self.plus_y))):
+                self.plus_y = -self.plus_y
         self.x = self.x + self.plus_x
         self.y = self.y + self.plus_y
 
