@@ -18,6 +18,9 @@ class Ball:
         self.screen_width, self.screen_height = screen_size
         self.render()
 
+    def get_coords(self):
+        return (self.x, self.y)
+
     def move(self, y_of_board):
         if self.x + self.radius >= self.screen_width or self.x <= 0:
             self.plus_x = -self.plus_x
