@@ -18,7 +18,6 @@ def spawn_balls(pos):
 
 def draw_lines_among_balls():
     if len(balls_sp) >= 2:
-        pos = balls_sp[0].get_coords()
         for ball in balls_sp[1:]:
             for ball2 in balls_sp:
                 pygame.draw.line(screen, pygame.Color('white'), ball2.get_coords(), ball.get_coords())
@@ -37,6 +36,7 @@ if __name__ == '__main__':
     x0 = screen_width // 2
     y0 = screen_height - 100
     need_draw_lines_among_balls = False
+    need_draw_poligon = False
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -60,6 +60,8 @@ if __name__ == '__main__':
                     balls_sp.clear()
                 elif event.key == pygame.K_g:
                     need_draw_lines_among_balls = True if need_draw_lines_among_balls is False else False
+                elif event.key == pygame.K_t:
+                    need_draw_poligon = True if need_draw_poligon is False else False
 
         clock.tick(600)
         pygame.display.flip()
@@ -67,6 +69,8 @@ if __name__ == '__main__':
         pygame.draw.line(screen, pygame.Color('white'), (0, y0), (screen_width, y0), width=3)
         if need_draw_lines_among_balls:
             draw_lines_among_balls()
+        if need_draw_poligon and len(balls_sp) >= 3:
+            pygame.draw.polygon(screen, pygame.Color('white'), [ball.get_coords() for ball in balls_sp])
         if pos[1] < y0:
             draw_line(pos)
         if balls_sp:
