@@ -2,6 +2,7 @@ import pygame
 from objects.ball import Ball
 from objects.square import Square
 from funcs import *
+import random
 balls_sp = []
 
 
@@ -36,9 +37,8 @@ if __name__ == '__main__':
     y0 = screen_height - 100
     need_draw_lines_among_balls = False
     need_draw_poligon = False
+    need_draw_blocks = False
     squares = []
-    squares.append(Square((300, 400), 100))
-    squares.append(Square((200, 500), 100))
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -64,11 +64,18 @@ if __name__ == '__main__':
                     need_draw_lines_among_balls = True if need_draw_lines_among_balls is False else False
                 elif event.key == pygame.K_t:
                     need_draw_poligon = True if need_draw_poligon is False else False
+                elif event.key == pygame.K_b:
+                    squares = []
+                    need_draw_blocks = True if need_draw_blocks is False else False
 
         clock.tick(600)
         pygame.display.flip()
         screen.fill(pygame.Color('black'))
         pygame.draw.line(screen, pygame.Color('white'), (0, y0), (screen_width, y0), width=3)
+        if need_draw_blocks and len(squares) == 0:
+            squares = []
+            for _ in range(10):
+                squares.append(Square((random.randint(0, 700), random.randint(0, 600)), 100))
         if need_draw_lines_among_balls:
             draw_lines_among_balls()
         if need_draw_poligon and len(balls_sp) >= 3:
