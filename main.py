@@ -21,8 +21,6 @@ def draw_lines_among_balls():
         for ball in balls_sp[1:]:
             for ball2 in balls_sp:
                 pygame.draw.line(screen, pygame.Color('white'), ball2.get_coords(), ball.get_coords())
-                # pos = ball.get_coords()
-        #pygame.draw.line(screen, pygame.Color('white'), pos, balls_sp[0].get_coords())
 
 
 if __name__ == '__main__':
